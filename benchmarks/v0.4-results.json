@@ -1,0 +1,142 @@
+{
+  "version": "0.4.0",
+  "measuredOn": "2026-11-07",
+  "tokenizer": "gpt-tokenizer@4.1.0 / o200k_base",
+  "offline": {
+    "scope": "offline o200k_base text; JSON full scan count and preselected recovery, not autonomous model workflow",
+    "rows": [
+      {
+        "id": "record-qa",
+        "originalTokens": 2522,
+        "selectedTokens": 191
+      },
+      {
+        "id": "recovery-qa",
+        "originalTokens": 2522,
+        "selectedTokens": 84
+      }
+    ],
+    "recoveryRoundTripPassed": true
+  },
+  "live": {
+    "scope": "4 single-turn synthetic QA calls; selection and recovery precomputed; not autonomous MCP recovery or whole-task benchmark",
+    "results": [
+      {
+        "task": "record-qa-baseline",
+        "arm": "baseline",
+        "model": "gpt-6-astra",
+        "effort": "low",
+        "exitCode": 0,
+        "timedOut": false,
+        "answer": "{\"count\":120,\"failed_id\":70073,\"timeout_seconds\":30,\"allowed_to_delete\":false}",
+        "exactAnswerPassed": true,
+        "usage": [
+          {
+            "input_tokens": 17689,
+            "cached_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 26,
+            "reasoning_output_tokens": 0
+          }
+        ],
+        "observedUsageCoverage": {
+          "recordedRequests": 2,
+          "missingUsage": 1,
+          "conflicts": 0,
+          "conflictRequestIds": [],
+          "inputTokens": 17689,
+          "outputTokens": 26,
+          "knownTotal": 17715,
+          "complete": false
+        }
+      },
+      {
+        "task": "record-qa-selected",
+        "arm": "selected",
+        "model": "gpt-6-astra",
+        "effort": "low",
+        "exitCode": 0,
+        "timedOut": false,
+        "answer": "{\"count\":120,\"failed_id\":70073,\"timeout_seconds\":30,\"allowed_to_delete\":false}",
+        "exactAnswerPassed": true,
+        "usage": [
+          {
+            "input_tokens": 15358,
+            "cached_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 26,
+            "reasoning_output_tokens": 0
+          }
+        ],
+        "observedUsageCoverage": {
+          "recordedRequests": 2,
+          "missingUsage": 1,
+          "conflicts": 0,
+          "conflictRequestIds": [],
+          "inputTokens": 15358,
+          "outputTokens": 26,
+          "knownTotal": 15384,
+          "complete": false
+        }
+      },
+      {
+        "task": "recovery-qa-baseline",
+        "arm": "baseline",
+        "model": "gpt-6-astra",
+        "effort": "low",
+        "exitCode": 0,
+        "timedOut": false,
+        "answer": "{\"allowed_to_delete\":false}",
+        "exactAnswerPassed": true,
+        "usage": [
+          {
+            "input_tokens": 17699,
+            "cached_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 11,
+            "reasoning_output_tokens": 0
+          }
+        ],
+        "observedUsageCoverage": {
+          "recordedRequests": 2,
+          "missingUsage": 1,
+          "conflicts": 0,
+          "conflictRequestIds": [],
+          "inputTokens": 17699,
+          "outputTokens": 11,
+          "knownTotal": 17710,
+          "complete": false
+        }
+      },
+      {
+        "task": "recovery-qa-selected",
+        "arm": "selected",
+        "model": "gpt-6-astra",
+        "effort": "low",
+        "exitCode": 0,
+        "timedOut": false,
+        "answer": "{\"allowed_to_delete\":false}",
+        "exactAnswerPassed": true,
+        "usage": [
+          {
+            "input_tokens": 15261,
+            "cached_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 11,
+            "reasoning_output_tokens": 0
+          }
+        ],
+        "observedUsageCoverage": {
+          "recordedRequests": 2,
+          "missingUsage": 1,
+          "conflicts": 0,
+          "conflictRequestIds": [],
+          "inputTokens": 15261,
+          "outputTokens": 11,
+          "knownTotal": 15272,
+          "complete": false
+        }
+      }
+    ]
+  }
+}

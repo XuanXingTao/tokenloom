@@ -1,0 +1,114 @@
+[
+  {
+    "id": "pretty-json-zh",
+    "kind": "json",
+    "mode": "safe",
+    "text": "{\n  \"name\": \"中文测试\",\n  \"timeout\": 30,\n  \"note\": \"不允许删除历史数据\",\n  \"enabled\": false,\n  \"items\": [\n    { \"id\": 1, \"status\": \"ready\" },\n    { \"id\": 2, \"status\": \"failed\" }\n  ]\n}\n",
+    "expectedIncludes": [
+      "不允许删除历史数据",
+      "\"timeout\":30",
+      "\"enabled\":false",
+      "failed"
+    ]
+  },
+  {
+    "id": "large-number-lexemes",
+    "kind": "json",
+    "mode": "safe",
+    "text": "{\n  \"id\": 9007199254740993123456789,\n  \"x\": -0,\n  \"x\": 1.00e+003,\n  \"text\": \"  preserve inner whitespace  \"\n}\n",
+    "expectedIncludes": [
+      "9007199254740993123456789",
+      "\"x\":-0",
+      "\"x\":1.00e+003",
+      "  preserve inner whitespace  "
+    ]
+  },
+  {
+    "id": "repeat-log-with-error",
+    "kind": "logs",
+    "mode": "safe",
+    "text": "INFO worker ready and listening for the next request\nINFO worker ready and listening for the next request\nINFO worker ready and listening for the next request\nINFO worker ready and listening for the next request\nINFO worker ready and listening for the next request\nINFO worker ready and listening for the next request\nINFO worker ready and listening for the next request\nINFO worker ready and listening for the next request\nERROR connection failed after 30 seconds\n",
+    "expectedIncludes": [
+      "8 times",
+      "ERROR connection failed after 30 seconds"
+    ]
+  },
+  {
+    "id": "unique-timestamps",
+    "kind": "logs",
+    "mode": "safe",
+    "text": "10:00 INFO ready\n10:01 INFO ready\n10:02 ERROR timeout\n",
+    "expectedUnchanged": true
+  },
+  {
+    "id": "ordinary-prose",
+    "kind": "text",
+    "mode": "safe",
+    "text": "请说明部署步骤，不要删除数据库。只有测试通过后才可以发布。",
+    "expectedUnchanged": true
+  },
+  {
+    "id": "code-verbatim",
+    "kind": "code",
+    "mode": "safe",
+    "text": "def allowed(value):\n    # Keep the boundary exact.\n    return value <= 30\n",
+    "expectedUnchanged": true
+  },
+  {
+    "id": "no-bpe-benefit",
+    "kind": "json",
+    "mode": "safe",
+    "text": " \"hello\"",
+    "expectedUnchanged": true
+  },
+  {
+    "id": "invalid-json",
+    "kind": "json",
+    "mode": "safe",
+    "text": "{\n  \"value\": 1,\n}\n",
+    "expectedUnchanged": true
+  },
+  {
+    "id": "focus-reviewed-excerpt",
+    "kind": "text",
+    "mode": "focus",
+    "query": "cache",
+    "budget": 60,
+    "text": "Background about trees and weather. Background about trees and weather. Background about trees and weather. Background about trees and weather. Background about trees and weather. Background about trees and weather. Background about trees and weather. Background about trees and weather.\n\nThe cache avoids repeated work.\n\nDo not remove the timeout. Keep 30 seconds.\n\nBackground about trees and weather. Background about trees and weather. Background about trees and weather. Background about trees and weather. Background about trees and weather. Background about trees and weather. Background about trees and weather. Background about trees and weather.\n",
+    "expectedIncludes": [
+      "The cache avoids repeated work.",
+      "Do not remove the timeout. Keep 30 seconds."
+    ]
+  },
+  {
+    "id": "impossible-budget",
+    "kind": "text",
+    "mode": "focus",
+    "query": "缓存",
+    "budget": 5,
+    "text": "缓存必须保留，不得删除历史数据。超时不得超过 30 秒。\n\n这里介绍项目的背景。",
+    "expectedUnchanged": true
+  },
+  {
+    "id": "uniform-table-compact",
+    "kind": "table",
+    "mode": "safe",
+    "text": "[{\"request_identifier\":9000,\"execution_status\":\"ready\",\"permitted_retries\":3,\"timeout_seconds\":30},{\"request_identifier\":9001,\"execution_status\":\"ready\",\"permitted_retries\":3,\"timeout_seconds\":30},{\"request_identifier\":9002,\"execution_status\":\"ready\",\"permitted_retries\":3,\"timeout_seconds\":30},{\"request_identifier\":9003,\"execution_status\":\"ready\",\"permitted_retries\":3,\"timeout_seconds\":30},{\"request_identifier\":9004,\"execution_status\":\"ready\",\"permitted_retries\":3,\"timeout_seconds\":30},{\"request_identifier\":9005,\"execution_status\":\"ready\",\"permitted_retries\":3,\"timeout_seconds\":30},{\"request_identifier\":9006,\"execution_status\":\"ready\",\"permitted_retries\":3,\"timeout_seconds\":30},{\"request_identifier\":9007,\"execution_status\":\"ready\",\"permitted_retries\":3,\"timeout_seconds\":30},{\"request_identifier\":9008,\"execution_status\":\"ready\",\"permitted_retries\":3,\"timeout_seconds\":30},{\"request_identifier\":9009,\"execution_status\":\"ready\",\"permitted_retries\":3,\"timeout_seconds\":30},{\"request_identifier\":9010,\"execution_status\":\"ready\",\"permitted_retries\":3,\"timeout_seconds\":30},{\"request_identifier\":9011,\"execution_status\":\"ready\",\"permitted_retries\":3,\"timeout_seconds\":30},{\"request_identifier\":9012,\"execution_status\":\"ready\",\"permitted_retries\":3,\"timeout_seconds\":30},{\"request_identifier\":9013,\"execution_status\":\"ready\",\"permitted_retries\":3,\"timeout_seconds\":30},{\"request_identifier\":9014,\"execution_status\":\"ready\",\"permitted_retries\":3,\"timeout_seconds\":30},{\"request_identifier\":9015,\"execution_status\":\"ready\",\"permitted_retries\":3,\"timeout_seconds\":30},{\"request_identifier\":9016,\"execution_status\":\"ready\",\"permitted_retries\":3,\"timeout_seconds\":30},{\"request_identifier\":9017,\"execution_status\":\"failed\",\"permitted_retries\":3,\"timeout_seconds\":30},{\"request_identifier\":9018,\"execution_status\":\"ready\",\"permitted_retries\":3,\"timeout_seconds\":30},{\"request_identifier\":9019,\"execution_status\":\"ready\",\"permitted_retries\":3,\"timeout_seconds\":30},{\"request_identifier\":9020,\"execution_status\":\"ready\",\"permitted_retries\":3,\"timeout_seconds\":30},{\"request_identifier\":9021,\"execution_status\":\"ready\",\"permitted_retries\":3,\"timeout_seconds\":30},{\"request_identifier\":9022,\"execution_status\":\"ready\",\"permitted_retries\":3,\"timeout_seconds\":30},{\"request_identifier\":9023,\"execution_status\":\"ready\",\"permitted_retries\":3,\"timeout_seconds\":30}]",
+    "expectedIncludes": [
+      "failed",
+      "9017",
+      "30"
+    ]
+  },
+  {
+    "id": "uniform-table-pretty",
+    "kind": "table",
+    "mode": "safe",
+    "text": "[\n  {\n    \"request_identifier\": 9000,\n    \"execution_status\": \"ready\",\n    \"permitted_retries\": 3,\n    \"timeout_seconds\": 30\n  },\n  {\n    \"request_identifier\": 9001,\n    \"execution_status\": \"ready\",\n    \"permitted_retries\": 3,\n    \"timeout_seconds\": 30\n  },\n  {\n    \"request_identifier\": 9002,\n    \"execution_status\": \"ready\",\n    \"permitted_retries\": 3,\n    \"timeout_seconds\": 30\n  },\n  {\n    \"request_identifier\": 9003,\n    \"execution_status\": \"ready\",\n    \"permitted_retries\": 3,\n    \"timeout_seconds\": 30\n  },\n  {\n    \"request_identifier\": 9004,\n    \"execution_status\": \"ready\",\n    \"permitted_retries\": 3,\n    \"timeout_seconds\": 30\n  },\n  {\n    \"request_identifier\": 9005,\n    \"execution_status\": \"ready\",\n    \"permitted_retries\": 3,\n    \"timeout_seconds\": 30\n  },\n  {\n    \"request_identifier\": 9006,\n    \"execution_status\": \"ready\",\n    \"permitted_retries\": 3,\n    \"timeout_seconds\": 30\n  },\n  {\n    \"request_identifier\": 9007,\n    \"execution_status\": \"ready\",\n    \"permitted_retries\": 3,\n    \"timeout_seconds\": 30\n  },\n  {\n    \"request_identifier\": 9008,\n    \"execution_status\": \"ready\",\n    \"permitted_retries\": 3,\n    \"timeout_seconds\": 30\n  },\n  {\n    \"request_identifier\": 9009,\n    \"execution_status\": \"ready\",\n    \"permitted_retries\": 3,\n    \"timeout_seconds\": 30\n  },\n  {\n    \"request_identifier\": 9010,\n    \"execution_status\": \"ready\",\n    \"permitted_retries\": 3,\n    \"timeout_seconds\": 30\n  },\n  {\n    \"request_identifier\": 9011,\n    \"execution_status\": \"ready\",\n    \"permitted_retries\": 3,\n    \"timeout_seconds\": 30\n  },\n  {\n    \"request_identifier\": 9012,\n    \"execution_status\": \"ready\",\n    \"permitted_retries\": 3,\n    \"timeout_seconds\": 30\n  },\n  {\n    \"request_identifier\": 9013,\n    \"execution_status\": \"ready\",\n    \"permitted_retries\": 3,\n    \"timeout_seconds\": 30\n  },\n  {\n    \"request_identifier\": 9014,\n    \"execution_status\": \"ready\",\n    \"permitted_retries\": 3,\n    \"timeout_seconds\": 30\n  },\n  {\n    \"request_identifier\": 9015,\n    \"execution_status\": \"ready\",\n    \"permitted_retries\": 3,\n    \"timeout_seconds\": 30\n  },\n  {\n    \"request_identifier\": 9016,\n    \"execution_status\": \"ready\",\n    \"permitted_retries\": 3,\n    \"timeout_seconds\": 30\n  },\n  {\n    \"request_identifier\": 9017,\n    \"execution_status\": \"failed\",\n    \"permitted_retries\": 3,\n    \"timeout_seconds\": 30\n  },\n  {\n    \"request_identifier\": 9018,\n    \"execution_status\": \"ready\",\n    \"permitted_retries\": 3,\n    \"timeout_seconds\": 30\n  },\n  {\n    \"request_identifier\": 9019,\n    \"execution_status\": \"ready\",\n    \"permitted_retries\": 3,\n    \"timeout_seconds\": 30\n  },\n  {\n    \"request_identifier\": 9020,\n    \"execution_status\": \"ready\",\n    \"permitted_retries\": 3,\n    \"timeout_seconds\": 30\n  },\n  {\n    \"request_identifier\": 9021,\n    \"execution_status\": \"ready\",\n    \"permitted_retries\": 3,\n    \"timeout_seconds\": 30\n  },\n  {\n    \"request_identifier\": 9022,\n    \"execution_status\": \"ready\",\n    \"permitted_retries\": 3,\n    \"timeout_seconds\": 30\n  },\n  {\n    \"request_identifier\": 9023,\n    \"execution_status\": \"ready\",\n    \"permitted_retries\": 3,\n    \"timeout_seconds\": 30\n  }\n]",
+    "expectedIncludes": [
+      "failed",
+      "9017",
+      "30"
+    ]
+  }
+]

@@ -1,0 +1,222 @@
+{
+  "version": "0.1.0",
+  "encoding": "o200k_base",
+  "tokenizerPackage": "gpt-tokenizer@4.1.0",
+  "scope": "Deterministic synthetic fixtures; local visible-text counts, NOT model quality, billed usage or a Caveman performance comparison.",
+  "instructionTokens": {
+    "skillFile": 239,
+    "customInstructionsZh": 54,
+    "customInstructionsEn": 49,
+    "conciseControl": 5
+  },
+  "rows": [
+    {
+      "id": "pretty-json-zh",
+      "kind": "json",
+      "mode": "safe",
+      "originalTokens": 71,
+      "compactTokens": 42,
+      "savedTokens": 29,
+      "savedPercent": 40.85,
+      "withPolicyTokens": 96,
+      "netSavedWithPolicy": -25,
+      "lossy": false,
+      "budgetMet": true,
+      "checks": true,
+      "warnings": [],
+      "output": "{\"name\":\"中文测试\",\"timeout\":30,\"note\":\"不允许删除历史数据\",\"enabled\":false,\"items\":[{\"id\":1,\"status\":\"ready\"},{\"id\":2,\"status\":\"failed\"}]}"
+    },
+    {
+      "id": "large-number-lexemes",
+      "kind": "json",
+      "mode": "safe",
+      "originalTokens": 47,
+      "compactTokens": 35,
+      "savedTokens": 12,
+      "savedPercent": 25.53,
+      "withPolicyTokens": 89,
+      "netSavedWithPolicy": -42,
+      "lossy": false,
+      "budgetMet": true,
+      "checks": true,
+      "warnings": [],
+      "output": "{\"id\":9007199254740993123456789,\"x\":-0,\"x\":1.00e+003,\"text\":\"  preserve inner whitespace  \"}"
+    },
+    {
+      "id": "repeat-log-with-error",
+      "kind": "logs",
+      "mode": "safe",
+      "originalTokens": 88,
+      "compactTokens": 26,
+      "savedTokens": 62,
+      "savedPercent": 70.45,
+      "withPolicyTokens": 80,
+      "netSavedWithPolicy": 8,
+      "lossy": true,
+      "budgetMet": true,
+      "checks": true,
+      "warnings": [
+        "Log runs use an annotated representation. Keep the original for byte-exact replay or machine parsing."
+      ],
+      "output": "[Exact line repeated 8 times]\nINFO worker ready and listening for the next request\nERROR connection failed after 30 seconds\n"
+    },
+    {
+      "id": "unique-timestamps",
+      "kind": "logs",
+      "mode": "safe",
+      "originalTokens": 18,
+      "compactTokens": 18,
+      "savedTokens": 0,
+      "savedPercent": 0,
+      "withPolicyTokens": 72,
+      "netSavedWithPolicy": -54,
+      "lossy": false,
+      "budgetMet": true,
+      "checks": true,
+      "warnings": [],
+      "output": "10:00 INFO ready\n10:01 INFO ready\n10:02 ERROR timeout\n"
+    },
+    {
+      "id": "ordinary-prose",
+      "kind": "text",
+      "mode": "safe",
+      "originalTokens": 17,
+      "compactTokens": 17,
+      "savedTokens": 0,
+      "savedPercent": 0,
+      "withPolicyTokens": 71,
+      "netSavedWithPolicy": -54,
+      "lossy": false,
+      "budgetMet": true,
+      "checks": true,
+      "warnings": [],
+      "output": "请说明部署步骤，不要删除数据库。只有测试通过后才可以发布。"
+    },
+    {
+      "id": "code-verbatim",
+      "kind": "code",
+      "mode": "safe",
+      "originalTokens": 18,
+      "compactTokens": 18,
+      "savedTokens": 0,
+      "savedPercent": 0,
+      "withPolicyTokens": 72,
+      "netSavedWithPolicy": -54,
+      "lossy": false,
+      "budgetMet": true,
+      "checks": true,
+      "warnings": [
+        "Code is preserved verbatim."
+      ],
+      "output": "def allowed(value):\n    # Keep the boundary exact.\n    return value <= 30\n"
+    },
+    {
+      "id": "no-bpe-benefit",
+      "kind": "json",
+      "mode": "safe",
+      "originalTokens": 3,
+      "compactTokens": 3,
+      "savedTokens": 0,
+      "savedPercent": 0,
+      "withPolicyTokens": 57,
+      "netSavedWithPolicy": -54,
+      "lossy": false,
+      "budgetMet": true,
+      "checks": true,
+      "warnings": [
+        "Candidate had no net token saving after markers; original text preserved."
+      ],
+      "output": " \"hello\""
+    },
+    {
+      "id": "invalid-json",
+      "kind": "json",
+      "mode": "safe",
+      "originalTokens": 9,
+      "compactTokens": 9,
+      "savedTokens": 0,
+      "savedPercent": 0,
+      "withPolicyTokens": 63,
+      "netSavedWithPolicy": -54,
+      "lossy": false,
+      "budgetMet": true,
+      "checks": true,
+      "warnings": [
+        "Invalid JSON; original text preserved."
+      ],
+      "output": "{\n  \"value\": 1,\n}\n"
+    },
+    {
+      "id": "focus-reviewed-excerpt",
+      "kind": "text",
+      "mode": "focus",
+      "originalTokens": 113,
+      "compactTokens": 34,
+      "savedTokens": 79,
+      "savedPercent": 69.91,
+      "withPolicyTokens": 87,
+      "netSavedWithPolicy": 26,
+      "lossy": true,
+      "budgetMet": true,
+      "checks": true,
+      "warnings": [
+        "Lossy extraction: 2 source paragraphs omitted. Protection rules are heuristics; review against the original before sending."
+      ],
+      "output": "\n[Omitted 1 source paragraph]\n\nThe cache avoids repeated work.\n\nDo not remove the timeout. Keep 30 seconds.\n\n\n[Omitted 1 source paragraph]\n\n"
+    },
+    {
+      "id": "impossible-budget",
+      "kind": "text",
+      "mode": "focus",
+      "originalTokens": 24,
+      "compactTokens": 24,
+      "savedTokens": 0,
+      "savedPercent": 0,
+      "withPolicyTokens": 78,
+      "netSavedWithPolicy": -54,
+      "lossy": false,
+      "budgetMet": false,
+      "checks": true,
+      "warnings": [
+        "Protected content and omission markers exceed the budget; original text preserved."
+      ],
+      "output": "缓存必须保留，不得删除历史数据。超时不得超过 30 秒。\n\n这里介绍项目的背景。"
+    },
+    {
+      "id": "uniform-table-compact",
+      "kind": "table",
+      "mode": "safe",
+      "originalTokens": 554,
+      "compactTokens": 246,
+      "savedTokens": 308,
+      "savedPercent": 55.6,
+      "withPolicyTokens": 300,
+      "netSavedWithPolicy": 254,
+      "lossy": false,
+      "budgetMet": true,
+      "checks": true,
+      "warnings": [
+        "Table representation changes the JSON shape for model reading. Use expand-table to recover compact JSON; original formatting is not retained."
+      ],
+      "output": "{\"format\":\"tokenloom.table.v1\",\"columns\":[\"request_identifier\",\"execution_status\",\"permitted_retries\",\"timeout_seconds\"],\"rows\":[[9000,\"ready\",3,30],[9001,\"ready\",3,30],[9002,\"ready\",3,30],[9003,\"ready\",3,30],[9004,\"ready\",3,30],[9005,\"ready\",3,30],[9006,\"ready\",3,30],[9007,\"ready\",3,30],[9008,\"ready\",3,30],[9009,\"ready\",3,30],[9010,\"ready\",3,30],[9011,\"ready\",3,30],[9012,\"ready\",3,30],[9013,\"ready\",3,30],[9014,\"ready\",3,30],[9015,\"ready\",3,30],[9016,\"ready\",3,30],[9017,\"failed\",3,30],[9018,\"ready\",3,30],[9019,\"ready\",3,30],[9020,\"ready\",3,30],[9021,\"ready\",3,30],[9022,\"ready\",3,30],[9023,\"ready\",3,30]]}"
+    },
+    {
+      "id": "uniform-table-pretty",
+      "kind": "table",
+      "mode": "safe",
+      "originalTokens": 938,
+      "compactTokens": 246,
+      "savedTokens": 692,
+      "savedPercent": 73.77,
+      "withPolicyTokens": 300,
+      "netSavedWithPolicy": 638,
+      "lossy": false,
+      "budgetMet": true,
+      "checks": true,
+      "warnings": [
+        "Table representation changes the JSON shape for model reading. Use expand-table to recover compact JSON; original formatting is not retained."
+      ],
+      "output": "{\"format\":\"tokenloom.table.v1\",\"columns\":[\"request_identifier\",\"execution_status\",\"permitted_retries\",\"timeout_seconds\"],\"rows\":[[9000,\"ready\",3,30],[9001,\"ready\",3,30],[9002,\"ready\",3,30],[9003,\"ready\",3,30],[9004,\"ready\",3,30],[9005,\"ready\",3,30],[9006,\"ready\",3,30],[9007,\"ready\",3,30],[9008,\"ready\",3,30],[9009,\"ready\",3,30],[9010,\"ready\",3,30],[9011,\"ready\",3,30],[9012,\"ready\",3,30],[9013,\"ready\",3,30],[9014,\"ready\",3,30],[9015,\"ready\",3,30],[9016,\"ready\",3,30],[9017,\"failed\",3,30],[9018,\"ready\",3,30],[9019,\"ready\",3,30],[9020,\"ready\",3,30],[9021,\"ready\",3,30],[9022,\"ready\",3,30],[9023,\"ready\",3,30]]}"
+    }
+  ]
+}

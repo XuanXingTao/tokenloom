@@ -1,0 +1,25 @@
+{
+  "name": "tokenloom-local",
+  "version": "0.4.0",
+  "private": true,
+  "description": "Local, measured context compression and concise ChatGPT instructions.",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "pnpm@11.25.0",
+  "bin": {
+    "tokenloom": "./src/cli.js"
+  },
+  "scripts": {
+    "test": "node --test",
+    "bench": "node scripts/benchmark.js",
+    "check": "node --test && node scripts/benchmark.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.32.2",
+    "gpt-tokenizer": "4.1.0",
+    "zod": "4.6.7"
+  }
+}
