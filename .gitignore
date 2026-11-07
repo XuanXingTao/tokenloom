@@ -1,0 +1,9 @@
+node_modules/
+dist/
+reports/
+.tokenloom-store/
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
