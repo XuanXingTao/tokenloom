@@ -1,0 +1,17 @@
+{
+  "name": "tokenloom-local",
+  "plugins": [
+    {
+      "name": "tokenloom",
+      "source": {
+        "source": "local",
+        "path": "./plugins/tokenloom"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
